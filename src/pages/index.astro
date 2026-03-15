@@ -4,8 +4,6 @@ import Photography from "../components/Photography.astro";
 import Layout from "../layouts/Layout.astro";
 import { getGithubProjects, type GithubProject } from "../lib/github";
 
-const title = "dylan.codes";
-
 let projects: GithubProject[] = [];
 
 try {
@@ -15,7 +13,7 @@ try {
 }
 ---
 
-<Layout title={title}>
+<Layout>
   <main
     class="container mx-auto mt-20 flex h-full w-full flex-col items-center px-2 md:px-4 selection:bg-indigo-300"
   >
