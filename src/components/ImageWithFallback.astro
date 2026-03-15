@@ -24,12 +24,14 @@ console.log(containerStyles)
 <div class="relative block">
   <div
     data-skeleton={uid}
-    class:list={[className, "absolute inset-0 animate-pulse bg-white/10 rounded-xl pointer-events-none"]}
-  ></div>
+    class:list={[className, "transition-opacity absolute inset-0 pointer-events-none z-10"]}
+  >
+  <div class="animate-pulse bg-white/30 rounded-xl w-full h-full"></div>
+</div>
   <Image
     src={src}
     alt={alt}
-    class:list={[className, "opacity-0 transition-opacity duration-500"]}
+    class:list={[className, "opacity-0 transition-opacity duration-500 z-20"]}
     data-imgwf={uid}
     {...rest}
   />
