@@ -92,9 +92,7 @@
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <div
     use:portal
-    in:receive={{ key: id }}
-    out:send={{ key: id }}
-    class="fixed inset-0 z-500 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+    class="fixed inset-0 z-500 flex items-center justify-center bg-black/80 backdrop-blur-sm w-screen h-screen"
     onclick={close}
     role="dialog"
     aria-modal="true"
@@ -150,7 +148,8 @@
         }}
         class="absolute top-1/2 right-4 z-10 -translate-y-1/2 cursor-pointer p-3 text-3xl leading-none text-white/70 hover:text-white"
         aria-label="Next"
-        ><svg
+      >
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -161,11 +160,11 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
-          ><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
             d="M5 12l14 0"
-          /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg
-        ></button
-      >
+          ></path><path d="M15 16l4 -4"></path><path d="M15 8l4 4"></path></svg
+        >
+      </button>
     {/if}
 
     <button

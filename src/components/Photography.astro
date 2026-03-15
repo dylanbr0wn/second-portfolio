@@ -43,14 +43,18 @@ const allPhotos = await getCollection("photos");
           <ImageWithFallback
             src={photo.data.img}
             alt={photo.data.title}
+            data-height={photo.data.img.height}
+            data-width={photo.data.img.width}
             layout="full-width"
-            class="h-full max-h-[80vh] w-auto max-w-[90vw] rounded-xl"
+            class="max-h-[80vh] h-full w-auto max-w-[90vw] rounded-xl"
             slot="fullSizeImage"
             height={2000}
           />
           <ImageWithFallback
             src={photo.data.img}
             alt={photo.data.title}
+            data-height={photo.data.img.height}
+            data-width={photo.data.img.width}
             layout="constrained"
             width={330}
             class="transition-transform duration-500 hover:scale-105"

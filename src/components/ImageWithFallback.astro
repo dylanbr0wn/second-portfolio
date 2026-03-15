@@ -12,14 +12,15 @@ interface Props {
 
 const { src, alt, class: className, width, ...rest } = Astro.props;
 const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
+
 ---
 
-<div class="relative block">
+<div data-container={uid} class="relative block">
   <div
     data-skeleton={uid}
     class:list={[
       className,
-      "pointer-events-none absolute inset-0 z-20 transition-opacity",
+      "pointer-events-none z-20 transition-opacity w-full h-full",
     ]}
   >
     <div class="h-full w-full animate-pulse rounded-xl bg-white/30"></div>
@@ -27,7 +28,7 @@ const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
   <Image
     src={src}
     alt={alt}
-    class:list={[className, "z-20 opacity-0 transition-opacity duration-500"]}
+    class:list={[className, "z-20 opacity-0 transition-opacity duration-500 absolute top-0 left-0 w-full h-full"]}
     data-imgwf={uid}
     {...rest}
   />
@@ -38,10 +39,40 @@ const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
     const uid = img.dataset.imgwf;
     if (!uid) return;
     const skeleton = document.querySelector(`[data-skeleton="${uid}"]`);
+    const container = document.querySelector(`[data-container="${uid}"]`);
     if (!skeleton) return;
 
+    //need to figure out how big the skeleton should be before the image loads, otherwise it will cause layout shifts.
+
+    let imgWidth = img.dataset.width ? parseInt(img.dataset.width) : img.naturalWidth;
+    let imgHeight = img.dataset.height ? parseInt(img.dataset.height) : img.naturalHeight;
+    const aspectRatio = imgWidth / imgHeight;
+    
+    if (img.width) {
+      imgWidth = img.width;
+      imgHeight = img.width / aspectRatio;
+    } else if (img.height) {
+      imgHeight = img.height;
+      imgWidth = img.height * aspectRatio;
+    } 
+
+    // Now we need to find our limiting dimension based on screensize and the image's aspect ratio. We want to make sure the skeleton is big enough to prevent layout shifts, but not so big that it takes up too much space on smaller screens.
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const skeletonWidth = Math.min(imgWidth, screenWidth * 0.9);
+    const skeletonHeight = skeletonWidth / aspectRatio;
+
+    if (skeletonHeight > screenHeight * 0.8) {
+      (container as HTMLElement).style.width = `${screenHeight * 0.8 * aspectRatio}px`;
+      (container as HTMLElement).style.height = `${screenHeight * 0.8}px`;
+    } else {
+      (container as HTMLElement).style.width = `${skeletonWidth}px`;
+      (container as HTMLElement).style.height = `${skeletonHeight}px`;
+    }
+
     function reveal() {
-      console.log("Revealing image", uid);
       img.style.opacity = "1";
       (skeleton as HTMLElement).style.transition = "opacity 0.5s";
       (skeleton as HTMLElement).style.opacity = "0";
