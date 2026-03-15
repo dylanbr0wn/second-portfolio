@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme inline {
+    --font-sans: var(--font-inter-tight);
+}
+
+:where([data-astro-image]) {
+  object-fit: var(--fit);
+  object-position: var(--pos);
+}
+:where([data-astro-image='full-width']) {
+  width: 100%;
+}
+:where([data-astro-image='constrained']) {
+  max-width: 100%;
+}

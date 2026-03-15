@@ -1,11 +1,93 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import GithubProjects from "../components/GithubProjects.svelte";
+import Photography from "../components/Photography.astro";
+import Layout from "../layouts/Layout.astro";
+import { getGithubProjects, type GithubProject } from "../lib/github";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = "dylan.codes";
+
+let projects: GithubProject[] = [];
+
+try {
+  projects = await getGithubProjects();
+} catch (err) {
+  console.error("Error fetching GitHub projects:", err);
+}
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={title}>
+  <main
+    class="container mx-auto mt-20 flex h-full w-full flex-col items-center px-4 selection:bg-indigo-300"
+  >
+    <div class="relative h-full w-full">
+      <div
+        class="relative my-auto flex h-full w-full flex-col items-start gap-12 px-6"
+      >
+        <div
+          class="absolute -left-150 top-50 z-5 w-500 animate-fade-up mix-blend-screen animate-delay-300 animate-duration-[2000ms] animate-fill-both animate-ease-out"
+        >
+          <video
+            class="h-full w-full"
+            width="1920"
+            height="1280"
+            muted
+            autoplay
+            loop
+          >
+            <source src="/bhole.webm" type="video/webm" />
+          </video>
+        </div>
+        <div class="relative mx-auto h-full w-full max-w-5xl px-1">
+          <div class="my-auto flex h-full w-full flex-col justify-start gap-12">
+            <div class="h-5"></div>
+            <div
+              class="z-10 my-auto flex h-full flex-col justify-center text-white"
+            >
+              <h2
+                id="welcome"
+                class="py-3 text-7xl font-black tracking-wide svelte-title"
+              >
+                Welcome
+              </h2>
+              <p class="text-xl font-medium">
+                You have found my little slice of the internet! By day I work as
+                a software engineer, building apps, websites, and complex
+                systems with cool people. <br />
+                <br /> When I am not working, you will find me on my own video game
+                adventure, hiking in the mountains, building a custom keyboard, or
+                at the climbing gym.
+              </p>
+            </div>
+            <div class="h-80"></div>
+            <div class="h-10"></div>
+            <div
+              class="z-10 my-auto flex h-full flex-col justify-center text-right text-white"
+            >
+              <h2
+                id="software"
+                class="py-3 text-7xl font-black tracking-wide svelte-title"
+              >
+                Software
+              </h2>
+              <p class="text-xl font-medium">
+                I started coding in 2016 through a first year engineering course
+                at UVic. I knew at the time I had a knack for computery stuff
+                but boy was I in for a ride. Not long after, I got into web
+                development and have been hooked ever since. Here is collection
+                of a few of my personal endeavours from over the years:<br />
+              </p>
+              <GithubProjects {projects} />
+              <br />
+              <p class="text-xl font-medium">
+                These days I am working for a Victoria, BC based video game and
+                software studio called Hololabs, working on all kinds of cool
+                projects. <br />
+              </p>
+            </div>
+            <div class="h-10"></div>
+            <Photography />
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>

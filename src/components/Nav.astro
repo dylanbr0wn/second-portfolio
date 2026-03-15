@@ -1,0 +1,50 @@
+---
+import IconGitHub from "./IconGitHub.astro";
+import NavTitle from "./NavTitle.svelte";
+---
+
+<nav class="fixed top-0 z-20 w-full">
+  <div
+    id="nav-container"
+    class="h-10 relative mt-2 max-w-5xl overflow-hidden p-px rounded-xl border border-transparent px-4 backdrop-blur-2xl mx-auto"
+  >
+    <ul class="flex h-full w-full items-center justify-between">
+      <li class="">
+        <NavTitle client:load />
+      </li>
+      <li class="">
+        <a
+          href="https://github.com/dylanbr0wn"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-bold text-neutral-300 transition-colors hover:text-white"
+        >
+          <IconGitHub />
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script>
+  const startScrollPos = 50;
+  const endScrollPos = 250;
+  // add scroll listener to fade in background of nav
+  const nav = document.getElementById("nav-container");
+
+  window.addEventListener("scroll", () => {
+    if (nav) {
+      if (window.scrollY > startScrollPos) {
+        const opacity = Math.min(
+          (window.scrollY - startScrollPos) / (endScrollPos - startScrollPos),
+          1,
+        );
+        nav.style.backgroundColor = `rgb(23 23 23 / ${opacity * 0.75})`;
+        nav.style.borderColor = `rgb(64 64 64 / ${opacity * 0.5})`;
+      } else if (window.scrollY < startScrollPos) {
+        nav.style.backgroundColor = "transparent";
+      } else {
+        nav.style.backgroundColor = "rgb(23 23 23 / 0.75)";
+      }
+    }
+  });
+</script>

@@ -1,0 +1,61 @@
+---
+import { Font } from "astro:assets";
+import { SEO } from "astro-seo";
+
+export type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = "Dylan's Portfolio",
+  description = "Software engineer at Hololabs building apps, websites, and complex systems. Personal portfolio showcasing projects and photography.",
+} = Astro.props;
+
+const siteUrl = "https://dylanbrown.xyz";
+const ogImage = `${siteUrl}/twitter-og-image.jpg`;
+---
+
+<SEO
+  {title}
+  titleTemplate="%s | Dylan Brown"
+  titleDefault="Dylan's Portfolio"
+  {description}
+  canonical={siteUrl}
+  openGraph={{
+    basic: {
+      title,
+      type: "website",
+      image: ogImage,
+      url: siteUrl,
+    },
+    optional: {
+      description,
+      siteName: "Dylan's Portfolio",
+    },
+    image: {
+      alt: "Dylan's Portfolio",
+    },
+  }}
+/>
+<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#161516" />
+<meta name="generator" content={Astro.generator} />
+<Font cssVariable="--font-inter-tight" preload />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dylan Brown",
+  "jobTitle": "Senior Software Developer",
+  "url": "https://dylanbrown.xyz",
+  "sameAs": [
+    "https://github.com/dylanbr0wn",
+    "https://www.linkedin.com/in/dylan-brown-1b7857236/"
+  ]
+})} />

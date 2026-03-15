@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Photo from "./Photo.svelte";
+import ImageWithFallback from "./ImageWithFallback.astro";
+
+const allPhotos = await getCollection("photos");
+---
+
+<div class="z-10 flex h-full flex-col justify-center text-white">
+  <h2
+    id="photography"
+    class="py-3 text-7xl font-black tracking-wide svelte-title"
+  >
+    Photography
+  </h2>
+  <p class="text-xl font-medium">
+    Although I am rarely ever carrying anything more than my phone camera these
+    days, my first foray into the professional world was in photography. Here
+    are a few of my favourites:
+  </p>
+  <div class="columns-2 md:columns-3 gap-3 mt-5">
+    {
+      allPhotos.map((photo, index) => (
+        <Photo
+          title={photo.data.title}
+          id={photo.id}
+          iso={photo.data.iso}
+          shutter={photo.data.shutter}
+          aperture={photo.data.aperture}
+          device={photo.data.device}
+          prevId={
+            index > 0
+              ? allPhotos[index - 1].id
+              : allPhotos[allPhotos.length - 1].id
+          }
+          nextId={
+            index < allPhotos.length - 1
+              ? allPhotos[index + 1].id
+              : allPhotos[0].id
+          }
+          client:load
+        >
+            <ImageWithFallback src={photo.data.img} alt={photo.data.title} layout="full-width" class="max-h-[80vh] max-w-[90vw] h-full w-auto rounded-xl" slot="fullSizeImage" height={2000} />
+            <ImageWithFallback src={photo.data.img} alt={photo.data.title} layout='constrained' width={330} class="hover:scale-105 transition-transform duration-500" />
+        </Photo>
+      ))
+    }
+  </div>
+</div>
