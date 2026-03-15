@@ -12,13 +12,6 @@ interface Props {
 
 const { src, alt, class: className, width, ...rest } = Astro.props;
 const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
-
-const aspectRatio = src.width / src.height;
-const containerStyles = width
-  ? `width: ${width}px; height: ${width / aspectRatio}px;`
-  : `width: ${src.width}px; height: ${src.height}px;`;
-
-console.log(containerStyles)
 ---
 
 <div class="relative block">

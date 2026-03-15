@@ -38,7 +38,6 @@
   });
 
   function open() {
-    console.log("opening", id);
     store.selected = id;
   }
 
@@ -47,12 +46,10 @@
   }
 
   function prev() {
-    console.log("opening prev", prevId);
     store.selected = prevId;
   }
 
   function next() {
-    console.log("opening next", nextId);
     store.selected = nextId;
   }
 
