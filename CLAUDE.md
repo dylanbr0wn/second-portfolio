@@ -37,7 +37,7 @@ No test runner is configured. Requires `GITHUB_TOKEN` in `.env` (see `.env.examp
 
 **GitHub projects:** `src/lib/github.ts` fetches a hardcoded list of repos (`projs` array) from the GitHub API using `GITHUB_TOKEN` from `astro:env/server`. Add new repos to that array to include them on the site.
 
-**SEO:** `BaseHead.astro` uses `astro-seo` with Open Graph configured. The OG image is `/twitter-og-image.jpg`. Site URL is `https://dylanbrown.xyz`.
+**SEO:** `BaseHead.astro` uses `astro-seo` with Open Graph configured. The OG image is `/twitter-og-image.jpg`. Site URL is `https://dylanbrown.space`.
 
 ## Adding photos
 

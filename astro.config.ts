@@ -9,7 +9,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://dylanbrown.xyz",
+  site: "https://dylanbrown.space",
   integrations: [svelte(), sitemap()],
   fonts: [{
     provider: fontProviders.fontsource(),
