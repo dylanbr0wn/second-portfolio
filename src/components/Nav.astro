@@ -1,5 +1,6 @@
 ---
 import IconGitHub from "./IconGitHub.astro";
+import IconLinkedIn from "./IconLinkedIn.astro";
 import NavTitle from "./NavTitle.svelte";
 ---
 
@@ -12,7 +13,7 @@ import NavTitle from "./NavTitle.svelte";
       <li class="">
         <NavTitle client:load />
       </li>
-      <li class="">
+      <li class="flex items-center gap-3">
         <a
           href="https://github.com/dylanbr0wn"
           target="_blank"
@@ -20,6 +21,14 @@ import NavTitle from "./NavTitle.svelte";
           class="font-bold text-neutral-300 transition-colors hover:text-white"
         >
           <IconGitHub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/dylan-brown-1b7857236/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-bold text-neutral-300 transition-colors hover:text-white"
+        >
+          <IconLinkedIn />
         </a>
       </li>
     </ul>

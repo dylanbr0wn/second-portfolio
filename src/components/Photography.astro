@@ -40,8 +40,21 @@ const allPhotos = await getCollection("photos");
           }
           client:load
         >
-            <ImageWithFallback src={photo.data.img} alt={photo.data.title} layout="full-width" class="max-h-[80vh] max-w-[90vw] h-full w-auto rounded-xl" slot="fullSizeImage" height={2000} />
-            <ImageWithFallback src={photo.data.img} alt={photo.data.title} layout='constrained' width={330} class="hover:scale-105 transition-transform duration-500" />
+          <ImageWithFallback
+            src={photo.data.img}
+            alt={photo.data.title}
+            layout="full-width"
+            class="max-h-[80vh] max-w-[90vw] h-full w-auto rounded-xl"
+            slot="fullSizeImage"
+            height={2000}
+          />
+          <ImageWithFallback
+            src={photo.data.img}
+            alt={photo.data.title}
+            layout="constrained"
+            width={330}
+            class="hover:scale-105 transition-transform duration-500"
+          />
         </Photo>
       ))
     }
