@@ -19,12 +19,16 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.4",
     "astro-seo": "^1.1.0",
+    "sharp": "^0.34.5",
     "svelte": "^5.53.12",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
