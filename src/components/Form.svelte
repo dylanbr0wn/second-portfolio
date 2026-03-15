@@ -29,7 +29,7 @@
 
 <div class="max-w-5xl p-1 mx-auto flex mt-20">
   <form
-    class="flex flex-col gap-4 w-1/2 text-white mx-auto items-center"
+    class="flex flex-col gap-4 w-full px-3 md:px-0 md:w-1/2 text-white mx-auto items-center"
     onsubmit={(e) => { e.preventDefault(); onSubmit(); }}
   >
     <h2 class="text-4xl font-bold ">Contact Me</h2>
