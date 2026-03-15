@@ -25,13 +25,13 @@ pnpm dev       # localhost:4321
 
 ## Commands
 
-| Command        | Action                              |
-| :------------- | :---------------------------------- |
-| `pnpm dev`     | Start dev server at localhost:4321  |
-| `pnpm build`   | Build to `./dist/`                  |
-| `pnpm preview` | Preview production build locally    |
-| `pnpm lint`    | ESLint (Astro + Svelte)             |
-| `pnpm format`  | Prettier (Astro + Svelte + TS)      |
+| Command        | Action                             |
+| :------------- | :--------------------------------- |
+| `pnpm dev`     | Start dev server at localhost:4321 |
+| `pnpm build`   | Build to `./dist/`                 |
+| `pnpm preview` | Preview production build locally   |
+| `pnpm lint`    | ESLint (Astro + Svelte)            |
+| `pnpm format`  | Prettier (Astro + Svelte + TS)     |
 
 ## Adding photos
 

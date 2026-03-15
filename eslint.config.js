@@ -1,8 +1,8 @@
 import tseslint from "typescript-eslint";
-import eslint from '@eslint/js';
+import eslint from "@eslint/js";
 import astro from "eslint-plugin-astro";
 import svelte from "eslint-plugin-svelte";
-import { defineConfig } from 'eslint/config';
+import { defineConfig } from "eslint/config";
 
 export default defineConfig(
   ...eslint.configs.recommended,
@@ -31,5 +31,5 @@ export default defineConfig(
   },
   {
     ignores: ["dist/", ".astro/", "node_modules/"],
-  }
+  },
 );

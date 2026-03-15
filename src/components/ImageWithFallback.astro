@@ -17,14 +17,17 @@ const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
 <div class="relative block">
   <div
     data-skeleton={uid}
-    class:list={[className, "transition-opacity absolute inset-0 pointer-events-none z-10"]}
+    class:list={[
+      className,
+      "pointer-events-none absolute inset-0 z-20 transition-opacity",
+    ]}
   >
-  <div class="animate-pulse bg-white/30 rounded-xl w-full h-full"></div>
-</div>
+    <div class="h-full w-full animate-pulse rounded-xl bg-white/30"></div>
+  </div>
   <Image
     src={src}
     alt={alt}
-    class:list={[className, "opacity-0 transition-opacity duration-500 z-20"]}
+    class:list={[className, "z-20 opacity-0 transition-opacity duration-500"]}
     data-imgwf={uid}
     {...rest}
   />
@@ -38,6 +41,7 @@ const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
     if (!skeleton) return;
 
     function reveal() {
+      console.log("Revealing image", uid);
       img.style.opacity = "1";
       (skeleton as HTMLElement).style.transition = "opacity 0.5s";
       (skeleton as HTMLElement).style.opacity = "0";
@@ -59,8 +63,7 @@ const uid = `imgwf_${Math.random().toString(36).slice(2, 9)}`;
     for (const mutation of mutations) {
       for (const node of mutation.addedNodes) {
         if (!(node instanceof Element)) continue;
-        if (node.matches("[data-imgwf]"))
-          setupImage(node as HTMLImageElement);
+        if (node.matches("[data-imgwf]")) setupImage(node as HTMLImageElement);
         node
           .querySelectorAll<HTMLImageElement>("[data-imgwf]")
           .forEach(setupImage);

@@ -9,7 +9,7 @@ const allPhotos = await getCollection("photos");
 <div class="z-10 flex h-full flex-col justify-center text-white">
   <h2
     id="photography"
-    class="py-3 text-5xl md:text-7xl font-black tracking-wide svelte-title"
+    class="svelte-title py-3 text-5xl font-black tracking-wide md:text-7xl"
   >
     Photography
   </h2>
@@ -18,7 +18,7 @@ const allPhotos = await getCollection("photos");
     days, my first foray into the professional world was in photography. Here
     are a few of my favourites:
   </p>
-  <div class="columns-2 md:columns-3 gap-3 mt-5">
+  <div class="mt-5 columns-2 gap-3 md:columns-3">
     {
       allPhotos.map((photo, index) => (
         <Photo
@@ -44,7 +44,7 @@ const allPhotos = await getCollection("photos");
             src={photo.data.img}
             alt={photo.data.title}
             layout="full-width"
-            class="max-h-[80vh] max-w-[90vw] h-full w-auto rounded-xl"
+            class="h-full max-h-[80vh] w-auto max-w-[90vw] rounded-xl"
             slot="fullSizeImage"
             height={2000}
           />
@@ -53,7 +53,7 @@ const allPhotos = await getCollection("photos");
             alt={photo.data.title}
             layout="constrained"
             width={330}
-            class="hover:scale-105 transition-transform duration-500"
+            class="transition-transform duration-500 hover:scale-105"
           />
         </Photo>
       ))

@@ -27,27 +27,30 @@
   }
 </script>
 
-<div class="max-w-5xl p-1 mx-auto flex mt-20">
+<div class="mx-auto mt-20 flex max-w-5xl p-1">
   <form
-    class="flex flex-col gap-4 w-full px-3 md:px-0 md:w-1/2 text-white mx-auto items-center"
-    onsubmit={(e) => { e.preventDefault(); onSubmit(); }}
+    class="mx-auto flex w-full flex-col items-center gap-4 px-3 text-white md:w-1/2 md:px-0"
+    onsubmit={(e) => {
+      e.preventDefault();
+      onSubmit();
+    }}
   >
-    <h2 class="text-4xl font-bold ">Contact Me</h2>
+    <h2 class="text-4xl font-bold">Contact Me</h2>
     <p class="text-base font-medium">
       Leave your email and a message below and il get back to you! Or find me on
       any of my socials!
     </p>
-    <div class="rounded-xl border border-neutral-500/50 flex flex-col w-full">
+    <div class="flex w-full flex-col rounded-xl border border-neutral-500/50">
       <input
         required
         bind:value={email}
         type="email"
         placeholder="your email address..."
-        class="text-neutral-400 bg-transparent rounded-t-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-700/50 placeholder:text-neutral-700 w-full"
+        class="w-full rounded-t-xl bg-transparent px-4 py-2 text-neutral-400 placeholder:text-neutral-700 focus:ring-2 focus:ring-neutral-700/50 focus:outline-none"
       />
       <textarea
         required
-        class="text-neutral-400 bg-transparent border-t rounded-b-xl border-neutral-500/50 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neutral-700/50 placeholder:text-neutral-700 w-full"
+        class="w-full rounded-b-xl border-t border-neutral-500/50 bg-transparent px-4 py-2 text-neutral-400 placeholder:text-neutral-700 focus:ring-2 focus:ring-neutral-700/50 focus:outline-none"
         bind:value={message}
         placeholder="something nice hopefully..."
         rows="5"
@@ -55,7 +58,7 @@
     </div>
 
     <button
-      class="w-1/2 px-4 py-2 disabled:opacity-50 rounded-xl border border-neutral-500/50 bg-neutral-800/50 hover:bg-neutral-800 transition-colors"
+      class="w-1/2 rounded-xl border border-neutral-500/50 bg-neutral-800/50 px-4 py-2 transition-colors hover:bg-neutral-800 disabled:opacity-50"
       type="submit"
       disabled={submitting}>Send</button
     >

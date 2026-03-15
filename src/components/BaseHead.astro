@@ -48,23 +48,32 @@ const ogImage = `${siteUrl}/twitter-og-image.jpg`;
 <meta name="theme-color" content="#161516" />
 <meta name="generator" content={Astro.generator} />
 <Font cssVariable="--font-inter-tight" preload />
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-SC45Z4B6BJ"></script>
+<script
+  is:inline
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-SC45Z4B6BJ"></script>
 <script is:inline lang="ts">
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
 
-  gtag('config', 'G-SC45Z4B6BJ');
+  gtag("config", "G-SC45Z4B6BJ");
 </script>
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Dylan Brown",
-  "jobTitle": "Senior Software Developer",
-  "url": "https://dylanbrown.space",
-  "sameAs": [
-    "https://github.com/dylanbr0wn",
-    "https://www.linkedin.com/in/dylan-brown-1b7857236/"
-  ]
-})} />
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Dylan Brown",
+    jobTitle: "Senior Software Developer",
+    url: "https://dylanbrown.space",
+    sameAs: [
+      "https://github.com/dylanbr0wn",
+      "https://www.linkedin.com/in/dylan-brown-1b7857236/",
+    ],
+  })}
+/>

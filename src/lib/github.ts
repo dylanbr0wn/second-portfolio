@@ -1,5 +1,5 @@
-import { getSecret } from 'astro:env/server';
-import { z } from 'astro/zod';
+import { getSecret } from "astro:env/server";
+import { z } from "astro/zod";
 
 const GithubRepoSchema = z.object({
   id: z.number(),
@@ -9,19 +9,23 @@ const GithubRepoSchema = z.object({
   languages_url: z.url(),
 });
 
-export const GithubProjectSchema = GithubRepoSchema.omit({ languages_url: true }).extend({
+export const GithubProjectSchema = GithubRepoSchema.omit({
+  languages_url: true,
+}).extend({
   languages: z.array(z.string()),
 });
 
 export type GithubProject = z.infer<typeof GithubProjectSchema>;
 
 const headers = () => ({
-  Authorization: `Bearer ${getSecret('GITHUB_TOKEN')}`,
+  Authorization: `Bearer ${getSecret("GITHUB_TOKEN")}`,
 });
 
 const projs = ["victoria-weather", "grid", "shotclock", "mlti"];
 
-async function getProjectWithLanguage(repo: z.infer<typeof GithubRepoSchema>): Promise<GithubProject> {
+async function getProjectWithLanguage(
+  repo: z.infer<typeof GithubRepoSchema>,
+): Promise<GithubProject> {
   const langRes = await fetch(repo.languages_url, { headers: headers() });
   const languages = Object.keys(await langRes.json());
   return GithubProjectSchema.parse({ ...repo, languages });
@@ -30,7 +34,7 @@ async function getProjectWithLanguage(repo: z.infer<typeof GithubRepoSchema>): P
 export async function getGithubProjects(): Promise<GithubProject[]> {
   const res = await fetch(
     "https://api.github.com/users/dylanbr0wn/repos?sort=pushed",
-    { headers: headers() }
+    { headers: headers() },
   );
   if (!res.ok) {
     throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);

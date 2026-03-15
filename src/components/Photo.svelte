@@ -170,7 +170,7 @@
 
     <button
       onclick={close}
-      class="absolute z-10 cursor-pointer top-4 right-4 p-3 text-2xl leading-none text-white/70 hover:text-white"
+      class="absolute top-4 right-4 z-10 cursor-pointer p-3 text-2xl leading-none text-white/70 hover:text-white"
       aria-label="Close"
       ><svg
         xmlns="http://www.w3.org/2000/svg"

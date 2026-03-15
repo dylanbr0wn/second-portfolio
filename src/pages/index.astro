@@ -15,14 +15,14 @@ try {
 
 <Layout>
   <main
-    class="container mx-auto mt-20 flex h-full w-full flex-col items-center px-2 md:px-4 selection:bg-indigo-300"
+    class="container mx-auto mt-20 flex h-full w-full flex-col items-center px-2 selection:bg-indigo-300 md:px-4"
   >
     <div class="relative h-full w-full">
       <div
         class="relative my-auto flex h-full w-full flex-col items-start gap-12 px-3 md:px-6"
       >
         <div
-          class="absolute -left-200 md:-left-150 top-70 md:top-50 z-5 w-500 animate-fade-up mix-blend-screen animate-delay-300 animate-duration-[2000ms] animate-fill-both animate-ease-out"
+          class="animate-fade-up animate-delay-300 animate-duration-[2000ms] animate-fill-both animate-ease-out absolute top-70 -left-200 z-5 w-500 mix-blend-screen md:top-50 md:-left-150"
         >
           <video
             class="h-full w-full"
@@ -43,7 +43,7 @@ try {
             >
               <h2
                 id="welcome"
-                class="py-3 text-7xl font-black tracking-wide svelte-title"
+                class="svelte-title py-3 text-7xl font-black tracking-wide"
               >
                 Welcome
               </h2>
@@ -63,7 +63,7 @@ try {
             >
               <h2
                 id="software"
-                class="py-3 text-7xl font-black tracking-wide svelte-title"
+                class="svelte-title py-3 text-7xl font-black tracking-wide"
               >
                 Software
               </h2>
@@ -84,6 +84,7 @@ try {
             </div>
             <div class="h-10"></div>
             <Photography />
+          </div>
         </div>
       </div>
     </div>

@@ -45,7 +45,7 @@
 
 <a
   href="/{curSection ? `#${curSection}` : ''}"
-  class="font-bold text-neutral-300 transition-colors before:pointer-events-none before:absolute before:left-0 before:top-0 before:h-full before:w-1/2 before:rounded-xl before:bg-linear-to-r before:from-cyan-100/50 before:to-cyan-100/0 before:opacity-0 before:blur-lg before:transition-opacity before:duration-500 hover:text-white hover:before:opacity-20"
+  class="font-bold text-neutral-300 transition-colors before:pointer-events-none before:absolute before:top-0 before:left-0 before:h-full before:w-1/2 before:rounded-xl before:bg-linear-to-r before:from-cyan-100/50 before:to-cyan-100/0 before:opacity-0 before:blur-lg before:transition-opacity before:duration-500 hover:text-white hover:before:opacity-20"
 >
   dylanbrown.space
   <span class="relative">
@@ -53,7 +53,7 @@
       <span
         in:fly={{ y: direction }}
         out:fly={{ y: direction }}
-        class="absolute font-normal italic text-neutral-600">#{curSection}</span
+        class="absolute font-normal text-neutral-600 italic">#{curSection}</span
       >
     {/if}
   </span>

@@ -1,3 +1,3 @@
 export const store = $state({
-    selected: null as string | null,
+  selected: null as string | null,
 });
